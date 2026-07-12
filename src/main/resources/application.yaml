@@ -1,3 +1,28 @@
+server.port: '8080'
+
 spring:
-  application:
-    name: post-service
+  application.name: post-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+    listener:
+      simple:
+        prefetch: 4
+  datasource:
+    url: jdbc:h2:mem:posts;CASE_INSENSITIVE_IDENTIFIERS=TRUE;
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      settings.web-allow-others: true
+  jpa:
+    database-patform: org.hibernate.dialect.H2Dialect
+    open-in-view: 'false'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
