@@ -4,6 +4,7 @@ import com.github.cidarosa.algaposts.post.service.api.model.PostInput;
 import com.github.cidarosa.algaposts.post.service.api.model.PostOutput;
 import com.github.cidarosa.algaposts.post.service.api.model.PostSummaryOutput;
 import com.github.cidarosa.algaposts.post.service.domain.service.PostService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,7 +36,7 @@ public class PostController {
      }
 
     @PostMapping
-    public ResponseEntity<PostOutput> create(@RequestBody PostInput input){
+    public ResponseEntity<PostOutput> create(@RequestBody @Valid PostInput input){
 
         PostOutput output = postService.save(input);
 
